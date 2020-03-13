@@ -1,156 +1,20 @@
-/**app.wxss**/
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-} 
-
-button {
-  background: initial;
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_1687683_ji54quuk1ai.eot?t=1584004866683'); /* IE9 */
+  src: url('//at.alicdn.com/t/font_1687683_ji54quuk1ai.eot?t=1584004866683#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAKAAAsAAAAABlQAAAIzAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcApgbwE2AiQDCAsGAAQgBYRtBy0bkgXIHpIkRVhYEE2M6gdBABGEa9hskhKArATU8KgQjah9BegMGflskfRtP/fmAxqV82X5FdEU2mJegdOMzs+j8VNqQm7CrSFOa5n5xL3TvwIKZD6gHPeiNQYNoC4OKKC9MYqsSGJvGLtBBQ89JtBolKa3u7+6hakiWxWIW2nsw3TmVRQnUS/UAg4WcVeN+nQ7Ddxpvx9fOVFPUpNlJQdXdhEsP2h5Sj6sDp2qCT6CcbwGGctAIY4Do3sGwmEPNEaHJsGxCoMPWlXVFnHUP0/UyvKbwbAueiZxKXnURILHEpH0jjJNJoavDp70NT3qSS0lx1d3c+I0Pu7NzfIApb3Uqz231AlPtVm3zn4HlgDVr3w3o4fg6ftjuW2r/6dNBbx5w9S6q18FmR3U78sW/BMxYVeJpZk5lVAMHEyGz9XQqBEV09npj1XXcwPJUK+HwV5nZERWb5osrGXUaLKCWvU20GjJ4XiTLmwgSgMWvWoI7b6RtHqBrN0PWVi/qNHrH7XaI6PRyei6sMlsXJ/vMPlCEQYvmIZ1pQqrzLvCa4ofCp+n0pZzT9ylAbQNa5k4UEUsYkv3GDsiChXXJe6156goamy4zigUIxFpFqapQG8ywrqEuR2M+ASJoMALlArVKqoeLuarz18jsQcFHyM6RsL3COuk4yObwSIgD6qKqONRXuk8ijmEUJDCaiW01+aRQqGGGvC8DAkJQ8IQbiyYeT9FqjLUa8q/OwKNMn2KvCLL56MIAAAAAA==') format('woff2'),
+  url('//at.alicdn.com/t/font_1687683_ji54quuk1ai.woff?t=1584004866683') format('woff'),
+  url('//at.alicdn.com/t/font_1687683_ji54quuk1ai.ttf?t=1584004866683') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('//at.alicdn.com/t/font_1687683_ji54quuk1ai.svg?t=1584004866683#iconfont') format('svg'); /* iOS 4.1- */
+}
+/* 添加字体图标 */
+.addicon {
+  font-family: "iconfont" !important;
+  font-size: 20px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-button:focus{
-  outline: 0;
-}
-
-button::after{
-  border: none;
-}
-
-
-page {
-  background: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.userinfo, .uploader, .tunnel {
-  margin-top: 40rpx;
-  height: 140rpx;
-  width: 100%;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
-  border-right: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  transition: all 300ms ease;
-}
-
-.userinfo-avatar {
-  width: 100rpx;
-  height: 100rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-  background-size: cover;
-  background-color: white;
-}
-
-.userinfo-avatar:after {
-  border: none;
-}
-
-.userinfo-nickname {
-  font-size: 32rpx;
-  color: #007aff;
-  background-color: white;
-  background-size: cover;
-}
-
-.userinfo-nickname::after {
-  border: none;
-}
-
-.uploader, .tunnel {
-  height: auto;
-  padding: 0 0 0 40rpx;
-  flex-direction: column;
-  align-items: flex-start;
-  box-sizing: border-box;
-}
-
-.uploader-text, .tunnel-text {
-  width: 100%;
-  line-height: 52px;
-  font-size: 34rpx;
-  color: #007aff;
-}
-
-.uploader-container {
-  width: 100%;
-  height: 400rpx;
-  padding: 20rpx 20rpx 20rpx 0;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.uploader-image {
-  width: 100%;
-  height: 360rpx;
-}
-
-.tunnel {
-  padding: 0 0 0 40rpx;
-}
-
-.tunnel-text {
-  position: relative;
-  color: #222;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.tunnel-text:first-child {
-  border-top: none;
-}
-
-.tunnel-switch {
-  position: absolute;
-  right: 20rpx;
-  top: -2rpx;
-}
-
-.disable {
-  color: #888;
-}
-
-.service {
-  position: fixed;
-  right: 40rpx;
-  bottom: 40rpx;
-  width: 140rpx;
-  height: 140rpx;
-  border-radius: 50%;
-  background: linear-gradient(#007aff, #0063ce);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  transition: all 300ms ease;
-}
-
-.service-button {
-  position: absolute;
-  top: 40rpx;
-}
-
-.service:active {
-  box-shadow: none;
-}
-
-.request-text {
-  padding: 20rpx 0;
-  font-size: 24rpx;
-  line-height: 36rpx;
-  word-break: break-all;
+.icon-add:before {
+  content: "\e62c";
 }

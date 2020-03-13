@@ -1,2 +1,37 @@
-
-<van-button type="primary">主要按钮</van-button>
+<van-tabs active="execution" animated swipeable>
+  <van-tab title="收集" name="inbox">
+    <van-cell-group>
+      <block wx:for="{{ todos }}">
+        <van-cell title="{{ item.title }}"/>
+      </block>
+    </van-cell-group>
+  </van-tab>
+  <van-tab title="执行" name="execution">
+    <van-cell-group>
+      <block wx:for="{{ todos }}">
+        <van-cell wx:if="{{ item.status == '执行' }}" title="{{ item.title }}"/>
+      </block>
+    </van-cell-group>
+  </van-tab>
+  <van-tab title="项目" name="project">
+    <van-cell-group>
+      <block wx:for="{{ todos }}">
+        <van-cell wx:if="{{ item.status == '项目' }}" title="{{ item.title }}"/>
+      </block>
+    </van-cell-group>
+  </van-tab>
+  <van-tab title="等待" name="wait">
+    <van-cell-group>
+      <block wx:for="{{ todos }}">
+        <van-cell wx:if="{{ item.status == '等待' }}" title="{{ item.title }}"/>
+      </block>
+    </van-cell-group>
+  </van-tab>
+  <van-tab title="未来" name="someday">
+    <van-cell-group>
+      <block wx:for="{{ todos }}">
+        <van-cell wx:if="{{ item.status == '未来' }}" title="{{ item.title }}"/>
+      </block>
+    </van-cell-group>
+  </van-tab>
+</van-tabs>

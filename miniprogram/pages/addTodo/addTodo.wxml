@@ -1,0 +1,22 @@
+<view class="container">
+</view>
+<form bindsubmit="onSubmit">
+    <view class="addTask">
+    <view>
+      <text class="addicon icon-add"></text>
+      <input class="tasks"  name="title" placeholder="准备做些什么..." bindinput="_handlerAddTask" value="{{ inputClear }}"></input>
+      <icon type="{{ isBe?'success':'warn' }}"></icon>
+    </view>
+    <view class="status">
+     <radio-group bindchange="_radioChange">
+      <radio value="执行" checked="{{ radioClear }}">执行</radio>
+      <radio value="项目" checked="{{ radioClear }}">项目</radio>
+      <radio value="等待" checked="{{ radioClear }}">等待</radio>
+      <radio value="未来" checked="{{ radioClear }}">未来</radio>
+     </radio-group>
+    </view>
+    <view>
+      <button class="addBtn" form-type="submit" disabled="{{ !(isBe && nowStatus)  }}">添加任务</button>
+    </view>
+  </view> 
+</form>
