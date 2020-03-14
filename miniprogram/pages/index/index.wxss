@@ -13,4 +13,8 @@
   margin-right: 20rpx;
 }
 
+.taskFont switch{
+  margin-left: 20rpx;
+}
+
 

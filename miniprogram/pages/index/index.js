@@ -7,7 +7,8 @@ Page({
    */
   data: {
     todos: [],
-    checkId: ''
+    changeId:'',
+    changeStatus: null
   },
 
   /**
@@ -52,24 +53,6 @@ Page({
     });
   },
   
-  //更改任务状态
-  _handlerChange: function(evt){
-    console.log(evt.detail.value)
-    this.setData({
-      checkId: evt.detail.value
-    })
-    db.collection('tasks').doc(this.data.checkId).update({
-      // data 传入需要局部更新的数据
-      data: {
-        // 表示将isFinish字段置为 true
-        isFinish: true
-      },
-      success: function(res) {
-        console.log(res)
-      }
-    })
-  },
-
   getData: function(callback){
     if(!callback){
       callback = res =>{}
@@ -93,5 +76,27 @@ Page({
 
   pageData: {
     skip:0
+  },
+  _handlerchange: function(evt){
+    console.log(evt.detail.value,evt.currentTarget.dataset.checkid)
+    this.setData({
+      changeId: evt.currentTarget.dataset.checkid,
+      changeStatus: evt.detail.value
+    })
+    tasks.doc(this.data.changeId).update({
+      data:{
+        isFinish: this.data.changeStatus
+      }
+    }).then(res=>{
+      console.log(res)
+    })
+    // wx.cloud.callFunction({
+    //   name: "upDate",
+    //   data: {
+
+    //   }
+    // }).then(res=>{
+    //   console.log("数据更新")
+    // })
   }
 })
