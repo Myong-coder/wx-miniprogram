@@ -2,7 +2,8 @@
   "pages": [
     "pages/addTodo/addTodo",
     "pages/index/index",
-    "pages/stat/stat"
+    "pages/stat/stat",
+    "pages/trash/trash"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -29,7 +30,17 @@
       "text": "统计分析",
       "iconPath": "assets/images/icon-stat.png",
       "selectedIconPath": "assets/images/icon-stat-checked.png"
+    },
+    {
+      "pagePath": "pages/trash/trash",
+      "text": "任务回收",
+      "iconPath": "assets/images/trash.png",
+      "selectedIconPath": "assets/images/trash-checked.png"
     }]
+  },
+  "usingComponents": {
+    "van-checkbox": "/miniprogram_npm/@vant/weapp/checkbox/index",
+    "van-checkbox-group": "/miniprogram_npm/@vant/weapp/checkbox-group/index"
   },
 
   "sitemapLocation": "sitemap.json"

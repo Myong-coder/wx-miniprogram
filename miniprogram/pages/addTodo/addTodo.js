@@ -2,13 +2,17 @@
 const db = wx.cloud.database();
 //初始化实例
 const tasks = db.collection('tasks');
+
 Page({
   data: {
     isBe: false,
     nowStatus: false,
     radioRecord: [],
+    dateRecord: '',
     inputClear: null,
-    radioClear: null
+    radioClear: null,
+    isFinish: false,
+    isDelete: false
   },
 
   //输入框获取输入并判断输入是否合法
@@ -54,6 +58,12 @@ Page({
         nowStatus: true
       })
     }
+    else if(status === '未来')
+    {
+      this.setData({
+        nowStatus: true
+      })
+    }
     else
     {
       nowStatus: false
@@ -62,14 +72,25 @@ Page({
 
 
   onSubmit: function(evt){
-    //console.log(evt.detail.value.title,this.data.radioRecord)
+    let nowDate = new Date;
+    let year = nowDate.getFullYear();
+    let month = nowDate.getMonth()+1;
+    let day = nowDate.getDay();
+    let today = `${year}-${month}-${day}`
+    console.log(evt,this.data.radioRecord,today)
+    this.setData({
+      dateRecord: today
+    })
     tasks.add({
       data:{
         title: evt.detail.value.title,
-        status: this.data.radioRecord
+        status: this.data.radioRecord,
+        isFinish: this.data.isFinish,
+        dateRecord: this.data.dateRecord,
+        isDelete: this.data.isDelete
       }
     }).then(res => { 
-      //console.log(res)
+      console.log(res)
       wx.showToast({
         title: '努力完成💪',
         icon:'success'
@@ -77,7 +98,10 @@ Page({
     })
     this.setData({
       inputClear: null,
-      radioClear: false
+      radioClear: false,
+      isBe: false,
+      nowStatus: false,
+      isDelete: false
     })
    },
 })

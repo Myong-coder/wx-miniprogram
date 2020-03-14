@@ -3,7 +3,6 @@
 <form bindsubmit="onSubmit">
     <view class="addTask">
     <view>
-      <text class="addicon icon-add"></text>
       <input class="tasks"  name="title" placeholder="准备做些什么..." bindinput="_handlerAddTask" value="{{ inputClear }}"></input>
       <icon type="{{ isBe?'success':'warn' }}"></icon>
     </view>
