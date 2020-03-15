@@ -1,4 +1,4 @@
-<van-tabs active="inbox" animated sticky>
+<van-tabs active="inbox" bind:change="onChange" animated sticky>
   <van-tab title="收集" name="inbox">
     <van-cell-group>
       <block wx:for="{{ todos }}">

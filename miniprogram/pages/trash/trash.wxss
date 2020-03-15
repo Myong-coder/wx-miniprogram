@@ -17,3 +17,14 @@
   margin-left: 20rpx;
 }
 
+.taskFont van-tag{
+  margin-right: 15rpx;
+}
+ 
+.container image{
+  width: 100rpx;
+  height: 100rpx;
+  position: fixed;
+  right: 20rpx;
+  bottom: 20rpx;
+}

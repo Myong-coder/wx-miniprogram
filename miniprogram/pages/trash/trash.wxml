@@ -1,11 +1,18 @@
-<van-cell-group>
-      <block wx:for="{{ todos }}">
-        <view class="taskFont" wx:if="{{ item.isDelete == true }}">
-            <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
-            <van-cell title="{{ item.title }}">
-            {{ item.dateRecord }}
-            </van-cell> 
-            <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon>
-        </view>
-      </block>
-</van-cell-group>
+<view class="container">
+	<van-cell-group>
+		<block wx:for="{{ todos }}">
+			<view class="taskFont" wx:if="{{ item.isDelete == true }}">
+				<van-cell title="{{ item.title }}">
+					<van-tag wx:if="{{ item.isFinish == false}}">未完成</van-tag>
+					<van-tag wx:if="{{ item.status == '执行' }}" type="danger">执行</van-tag>
+					<van-tag wx:if="{{ item.status == '项目' }}" type="warning">项目</van-tag>
+					<van-tag wx:if="{{ item.status == '等待' }}" type="success">等待</van-tag>
+					<van-tag wx:if="{{ item.status == '未来' }}" type="primary">未来</van-tag>
+					{{ item.dateRecord }}
+				</van-cell>
+				<icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel"></icon>
+			</view>
+		</block>
+	</van-cell-group>
+  <image src="/assets/images/empty.png" bindtap="allDel"></image>
+</view>

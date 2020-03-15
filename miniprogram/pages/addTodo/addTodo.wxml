@@ -8,10 +8,10 @@
     </view>
     <view class="status">
      <radio-group bindchange="_radioChange">
-      <radio value="执行" checked="{{ radioClear }}">执行</radio>
-      <radio value="项目" checked="{{ radioClear }}">项目</radio>
-      <radio value="等待" checked="{{ radioClear }}">等待</radio>
-      <radio value="未来" checked="{{ radioClear }}">未来</radio>
+      <radio class="stat" value="执行" checked="{{ radioClear }}">执行</radio>
+      <radio class="stat" value="项目" checked="{{ radioClear }}">项目</radio>
+      <radio class="stat" value="等待" checked="{{ radioClear }}">等待</radio>
+      <radio class="stat" value="未来" checked="{{ radioClear }}">未来</radio>
      </radio-group>
     </view>
     <view>

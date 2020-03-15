@@ -27,10 +27,9 @@
   margin-left: 20rpx;
 }
 
-.status radio-group{
-  display: flex;
+.status .stat{
+  margin: 15rpx;
 }
-
 
 button{
   width: 100%;

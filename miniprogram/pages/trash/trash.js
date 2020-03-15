@@ -57,7 +57,7 @@ Page({
       callback = res =>{}
     }
     wx.showLoading({
-      title: '更新任务...',
+      title: '获取回收任务列表...',
     })
     tasks.skip(this.pageData.skip).get().then(res=>{
       //console.log(res)
@@ -92,6 +92,7 @@ Page({
             success: console.log,
             fail: console
             })
+            this.onPullDownRefresh();
           console.log('点击确认回调')
         } else {   
           console.log('点击取消回调')
@@ -99,4 +100,24 @@ Page({
       }
     })
   },
+  allDel: function(evt){
+
+    wx.showModal({
+      title: '清空任务',
+      content: '确定要清空所有任务记录吗，清空后将无法恢复',
+      success: res=> {
+        if (res.confirm) {  
+          wx.cloud.callFunction({
+            name: 'batchDelete'
+          }).then(res=>{
+            console.log(res)
+          })
+          this.onPullDownRefresh();
+          //console.log('点击确认回调')
+        } else {   
+          //console.log('点击取消回调')
+        }
+      }
+    })
+  }
 })

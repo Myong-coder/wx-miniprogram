@@ -92,5 +92,23 @@ Page({
       //console.log(res)
       this.onPullDownRefresh()
     })
+  },
+  _handlerchange: function(evt){
+    console.log(evt.detail.value,evt.currentTarget.dataset.checkid)
+    this.setData({
+      changeId:evt.currentTarget.dataset.checkid,
+      changeStatus:evt.detail.value
+    })
+    tasks.doc(this.data.changeId).update({
+      data: {
+        isFinish: this.data.changeStatus
+      }
+    }).then(res=>{
+      console.log(res)
+    })
+  },
+  onChange: function(evt){
+    //console.log(evt)
+    this.onPullDownRefresh();
   }
 })
