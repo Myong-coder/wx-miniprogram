@@ -23,7 +23,9 @@ Page({
     //       todos: res.data
     //     })
     // })
+    //console.log(this.data.todos)
     this.getData(res =>{});
+    //console.log(this.data.todos)
   },
 
   /**
@@ -52,6 +54,7 @@ Page({
     this.getData(res=>{
       wx.stopPullDownRefresh();
     });
+    console.log(this.data.todos)
   },
   
   getData: function(callback){
@@ -61,7 +64,7 @@ Page({
     wx.showLoading({
       title: '更新任务...',
     })
-    tasks.skip(this.pageData.skip).get().then(res=>{
+    tasks.skip(this.pageData.skip).orderBy('time','desc').get().then(res=>{
       //console.log(res)
       let oldData = this.data.todos;
       this.setData({
@@ -73,6 +76,7 @@ Page({
         callback();
       })
   })
+  //console.log(this.data.todos)
   },
 
   pageData: {

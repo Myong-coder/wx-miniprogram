@@ -41,7 +41,6 @@ Page({
   onReachBottom: function(){
     //console.log('event');
     this.getData();
-
   },
 
   onPullDownRefresh:function(){
@@ -70,7 +69,7 @@ Page({
         //回调函数为了让刷新的动画加载不会立马停止
         callback();
       })
-  })
+    })
   },
 
   pageData: {

@@ -12,8 +12,9 @@ Page({
     inputClear: null,
     radioClear: null,
     isFinish: false,
-    isDelete: false
-  },
+    isDelete: false,
+    rank: ''
+  }, 
 
   //输入框获取输入并判断输入是否合法
   _handlerAddTask: function(evt){
@@ -76,11 +77,12 @@ Page({
     let year = nowDate.getFullYear();
     let month = nowDate.getMonth()+1;
     let day = nowDate.getDate();
-    console.log(day)
     let today = `${year}-${month}-${day}`
+    let second = Date.now();
     console.log(evt,this.data.radioRecord,today)
     this.setData({
-      dateRecord: today
+      dateRecord: today,
+      rank: second
     })
     tasks.add({
       data:{
@@ -88,7 +90,8 @@ Page({
         status: this.data.radioRecord,
         isFinish: this.data.isFinish,
         dateRecord: this.data.dateRecord,
-        isDelete: this.data.isDelete
+        isDelete: this.data.isDelete,
+        time: this.data.rank
       }
     }).then(res => { 
       console.log(res)
