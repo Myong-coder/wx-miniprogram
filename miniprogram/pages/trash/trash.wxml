@@ -1,2 +1,11 @@
-<!--pages/trash/trash.wxml-->
-<text>pages/trash/trash.wxml</text>
+<van-cell-group>
+      <block wx:for="{{ todos }}">
+        <view class="taskFont" wx:if="{{ item.isDelete == true }}">
+            <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
+            <van-cell title="{{ item.title }}">
+            {{ item.dateRecord }}
+            </van-cell> 
+            <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon>
+        </view>
+      </block>
+</van-cell-group>

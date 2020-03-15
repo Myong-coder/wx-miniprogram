@@ -75,7 +75,8 @@ Page({
     let nowDate = new Date;
     let year = nowDate.getFullYear();
     let month = nowDate.getMonth()+1;
-    let day = nowDate.getDay();
+    let day = nowDate.getDate();
+    console.log(day)
     let today = `${year}-${month}-${day}`
     console.log(evt,this.data.radioRecord,today)
     this.setData({

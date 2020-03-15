@@ -1,13 +1,13 @@
-<van-tabs active="execution" animated sticky>
+<van-tabs active="inbox" animated sticky>
   <van-tab title="收集" name="inbox">
     <van-cell-group>
       <block wx:for="{{ todos }}">
-        <view class="taskFont">
+        <view class="taskFont" wx:if="{{ item.isDelete == false }}">
             <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
             <van-cell title="{{ item.title }}">
             {{ item.dateRecord }}
             </van-cell> 
-            <icon type="clear"></icon>
+            <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon>
         </view>
       </block>
     </van-cell-group>
@@ -16,11 +16,11 @@
     <van-cell-group>
       <block wx:for="{{ todos }}">
 
-        <view class="taskFont" wx:if="{{ item.status == '执行' }}">
+        <view class="taskFont" wx:if="{{ item.status == '执行' &&item.isDelete == false }}">
           <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>        
           <icon type="{{ item.isFinish }}"></icon>
           <van-cell wx:if="{{ item.status == '执行' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
-          <icon type="clear"></icon>   
+          <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon>  
         </view>
 
       </block>
@@ -29,12 +29,11 @@
   <van-tab title="项目" name="project">
     <van-cell-group>
       <block wx:for="{{ todos }}">
-
-        <view class="taskFont" wx:if="{{ item.status == '项目' }}">
+        <view class="taskFont" wx:if="{{ item.status == '项目' &&item.isDelete == false}}">
           <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
           <icon type="{{ item.isFinish }}"></icon>
           <van-cell wx:if="{{ item.status == '项目' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
-          <icon type="clear"></icon>   
+          <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon> 
         </view>
 
       </block>
@@ -44,11 +43,11 @@
     <van-cell-group>
       <block wx:for="{{ todos }}">
 
-        <view class="taskFont" wx:if="{{ item.status == '等待' }}">
+        <view class="taskFont" wx:if="{{ item.status == '等待' &&item.isDelete == false}}">
           <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
           <icon type="{{ item.isFinish }}"></icon>
           <van-cell wx:if="{{ item.status == '等待' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
-          <icon type="clear"></icon>   
+          <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon>   
         </view>
 
       </block>
@@ -57,14 +56,12 @@
   <van-tab title="未来" name="someday">
     <van-cell-group>
       <block wx:for="{{ todos }}">
-
-        <view class="taskFont" wx:if="{{ item.status == '未来' }}">
+        <view class="taskFont" wx:if="{{ item.status == '未来' &&item.isDelete == false}}">
           <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
           <icon type="{{ item.isFinish }}"></icon>
           <van-cell wx:if="{{ item.status == '未来' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
-          <icon type="clear"></icon>   
+          <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon> 
         </view>
-
       </block>
     </van-cell-group>
   </van-tab>

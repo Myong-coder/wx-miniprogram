@@ -1,1 +1,19 @@
-/* pages/trash/trash.wxss */
+.taskFont{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.taskFont van-cell{
+  margin-left:0rpx;
+  flex: 1;
+}
+
+.taskFont icon{
+  margin-right: 20rpx;
+}
+
+.taskFont switch{
+  margin-left: 20rpx;
+}
+

@@ -8,7 +8,8 @@ Page({
   data: {
     todos: [],
     changeId:'',
-    changeStatus: null
+    changeStatus: null,
+    delId: ''
   },
 
   /**
@@ -58,7 +59,7 @@ Page({
       callback = res =>{}
     }
     wx.showLoading({
-      title: '获取任务...',
+      title: '更新任务...',
     })
     tasks.skip(this.pageData.skip).get().then(res=>{
       //console.log(res)
@@ -77,26 +78,19 @@ Page({
   pageData: {
     skip:0
   },
-  _handlerchange: function(evt){
-    console.log(evt.detail.value,evt.currentTarget.dataset.checkid)
+
+  _handlerDel: function(evt){
+    console.log(evt.currentTarget.dataset.delid)
     this.setData({
-      changeId: evt.currentTarget.dataset.checkid,
-      changeStatus: evt.detail.value
+      delId: evt.currentTarget.dataset.delid
     })
-    tasks.doc(this.data.changeId).update({
-      data:{
-        isFinish: this.data.changeStatus
+    tasks.doc(this.data.delId).update({
+      data: {
+        isDelete: true
       }
     }).then(res=>{
-      console.log(res)
+      //console.log(res)
+      this.onPullDownRefresh()
     })
-    // wx.cloud.callFunction({
-    //   name: "upDate",
-    //   data: {
-
-    //   }
-    // }).then(res=>{
-    //   console.log("数据更新")
-    // })
   }
 })
