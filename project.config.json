@@ -75,6 +75,21 @@
 					"id": -1,
 					"name": "回收站",
 					"pathName": "pages/trash/trash",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "任务详情",
+					"pathName": "pages/detail/detail",
+					"query": "id=1584335684322_0.21443908572641468_33562461",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试组件",
+					"pathName": "test/test/test",
+					"query": "id=1584335684322_0.21443908572641468_33562461",
 					"scene": null
 				}
 			]

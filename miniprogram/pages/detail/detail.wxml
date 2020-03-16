@@ -1,0 +1,5 @@
+<van-cell-group>
+	<van-cell title="清单类别" bindtap="onChange" > {{ todos.status }} </van-cell>
+	<van-cell title="任务状态"> {{ todos.isFinish ? '已完成' : '未完成' }}</van-cell>
+	<van-cell title="创建时间"> {{ getDate }}</van-cell>
+</van-cell-group>

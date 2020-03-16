@@ -1,68 +1,77 @@
 <van-tabs active="inbox" bind:change="onChange" animated sticky>
-  <van-tab title="收集" name="inbox">
-    <van-cell-group>
-      <block wx:for="{{ todos }}">
-        <view class="taskFont" wx:if="{{ item.isDelete == false }}">
-            <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
+	<van-tab title="收集" name="inbox">
+		<van-cell-group>
+			<block wx:for="{{ todos }}">
+				<view class="taskFont" wx:if="{{ item.isDelete == false }}">
+					<switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
+          <navigator url="../detail/detail?id={{ item._id }}">
             <van-cell title="{{ item.title }}">
-            {{ item.dateRecord }}
-            </van-cell> 
-            <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon>
-        </view>
-      </block>
-    </van-cell-group>
-  </van-tab>
-  <van-tab title="执行" name="execution">
-    <van-cell-group>
-      <block wx:for="{{ todos }}">
+              {{ item.dateRecord }}
+            </van-cell>
+          </navigator>
+					<icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel"></icon>
+				</view>
+			</block>
+		</van-cell-group>
+	</van-tab>
+	<van-tab title="执行" name="execution">
+		<van-cell-group>
+			<block wx:for="{{ todos }}">
+				<view class="taskFont" wx:if="{{ item.status == '执行' &&item.isDelete == false }}">
+					<switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
+					<icon type="{{ item.isFinish }}"></icon>
+					<navigator url="../detail/detail?id={{ item._id }}">
+					<van-cell wx:if="{{ item.status == '执行' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
+					</navigator>
+					<icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel"></icon>
+				</view>
 
-        <view class="taskFont" wx:if="{{ item.status == '执行' &&item.isDelete == false }}">
-          <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>        
-          <icon type="{{ item.isFinish }}"></icon>
-          <van-cell wx:if="{{ item.status == '执行' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
-          <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon>  
-        </view>
+			</block>
+		</van-cell-group>
+	</van-tab>
+	<van-tab title="项目" name="project">
+		<van-cell-group>
+			<block wx:for="{{ todos }}">
+				<view class="taskFont" wx:if="{{ item.status == '项目' &&item.isDelete == false}}">
+					<switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
+					<icon type="{{ item.isFinish }}"></icon>
+					<navigator url="../detail/detail?id={{ item._id }}">
+					<van-cell wx:if="{{ item.status == '项目' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
+					</navigator>
+					<icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel"></icon>
+				</view>
 
-      </block>
-    </van-cell-group>
-  </van-tab>
-  <van-tab title="项目" name="project">
-    <van-cell-group>
-      <block wx:for="{{ todos }}">
-        <view class="taskFont" wx:if="{{ item.status == '项目' &&item.isDelete == false}}">
-          <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
-          <icon type="{{ item.isFinish }}"></icon>
-          <van-cell wx:if="{{ item.status == '项目' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
-          <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon> 
-        </view>
+			</block>
+		</van-cell-group>
+	</van-tab>
+	<van-tab title="等待" name="wait">
+		<van-cell-group>
+			<block wx:for="{{ todos }}">
 
-      </block>
-    </van-cell-group>
-  </van-tab>
-  <van-tab title="等待" name="wait">
-    <van-cell-group>
-      <block wx:for="{{ todos }}">
+				<view class="taskFont" wx:if="{{ item.status == '等待' &&item.isDelete == false}}">
+					<switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
+					<icon type="{{ item.isFinish }}"></icon>
+					<navigator url="../detail/detail?id={{ item._id }}">
+					<van-cell wx:if="{{ item.status == '等待' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
+					</navigator>
+					<icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel"></icon>
+				</view>
 
-        <view class="taskFont" wx:if="{{ item.status == '等待' &&item.isDelete == false}}">
-          <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
-          <icon type="{{ item.isFinish }}"></icon>
-          <van-cell wx:if="{{ item.status == '等待' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
-          <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon>   
-        </view>
-
-      </block>
-    </van-cell-group>
-  </van-tab>
-  <van-tab title="未来" name="someday">
-    <van-cell-group>
-      <block wx:for="{{ todos }}">
-        <view class="taskFont" wx:if="{{ item.status == '未来' &&item.isDelete == false}}">
-          <switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
-          <icon type="{{ item.isFinish }}"></icon>
-          <van-cell wx:if="{{ item.status == '未来' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
-          <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel" ></icon> 
-        </view>
-      </block>
-    </van-cell-group>
-  </van-tab>
+			</block>
+		</van-cell-group>
+	</van-tab>
+	<van-tab title="未来" name="someday">
+		<van-cell-group>
+			<block wx:for="{{ todos }}">
+				<view class="taskFont" wx:if="{{ item.status == '未来' &&item.isDelete == false}}">
+					<switch data-checkid="{{ item._id }}" type="checkbox" checked="{{item.isFinish}}" bindchange="_handlerchange"></switch>
+					<icon type="{{ item.isFinish }}"></icon>
+					<navigator url="../detail/detail?id={{ item._id }}">
+					<van-cell wx:if="{{ item.status == '未来' }}" title="{{ item.title }}">{{ item.dateRecord }}</van-cell>
+					</navigator>
+					<icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel"></icon>
+				</view>
+			</block>
+		</van-cell-group>
+	</van-tab>
 </van-tabs>

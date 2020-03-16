@@ -13,7 +13,8 @@ Page({
     radioClear: null,
     isFinish: false,
     isDelete: false,
-    rank: ''
+    rank: '',
+    spendTime: '',
   }, 
 
   //输入框获取输入并判断输入是否合法
@@ -91,7 +92,8 @@ Page({
         isFinish: this.data.isFinish,
         dateRecord: this.data.dateRecord,
         isDelete: this.data.isDelete,
-        time: this.data.rank
+        time: this.data.rank,
+        spendTime: this.data.spendTime
       }
     }).then(res => { 
       console.log(res)
