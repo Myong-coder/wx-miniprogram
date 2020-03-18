@@ -1,6 +1,7 @@
 // pages/detail/detail.js
 const db = wx.cloud.database()
 const tasks = db.collection('tasks')
+const _= db.command
 Page({
 
   /**
@@ -12,14 +13,14 @@ Page({
     creatTime: '',
     getDate: ''
   },
-  
+
   pageData: {
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  async onLoad(options){
+  async onLoad(options) {
     //console.log(options)
     this.pageData.id = options.id
     console.log(this.pageData)
@@ -28,11 +29,11 @@ Page({
     })
     let res = await tasks.doc(options.id).get()
     // tasks.doc(options.id).get().then(res=>{
-      console.log(res)
-      this.setData({
-        todos: res.data,
-        creatTime: new Date(res.data.time)
-       })
+    console.log(res)
+    this.setData({
+      todos: res.data,
+      creatTime: new Date(res.data.time)
+    })
     // })
     let creatDate = this.data.creatTime;
     console.log(creatDate)
@@ -46,7 +47,7 @@ Page({
     // console.log(creatDate)
     let year = creatDate.getFullYear();
     // console.log(year)
-    let month = creatDate.getMonth()+1;
+    let month = creatDate.getMonth() + 1;
     // console.log(month)
     let day = creatDate.getDate();
     // console.log(day)
@@ -62,14 +63,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
-  onChange: function(){
+  onChange: function() {
     wx.showActionSheet({
-      itemList: ['执行', '项目', '等待','未来'],
-      success: (res)=> {
+      itemList: ['执行', '项目', '等待', '未来'],
+      success: (res) => {
         console.log(res.tapIndex)
         switch (res.tapIndex) {
           case 0:
@@ -77,11 +78,11 @@ Page({
               data: {
                 status: '执行'
               }
-            }).then(res=>{
+            }).then(res => {
               console.log(res)
               wx.showToast({
                 title: '更改成功',
-                icon:'success'
+                icon: 'success'
               })
               this.onPullDownRefresh()
             })
@@ -91,11 +92,11 @@ Page({
               data: {
                 status: '项目'
               }
-            }).then(res=>{
+            }).then(res => {
               console.log(res)
               wx.showToast({
                 title: '更改成功',
-                icon:'success'
+                icon: 'success'
               })
               this.onPullDownRefresh()
             })
@@ -105,11 +106,11 @@ Page({
               data: {
                 status: '等待'
               }
-            }).then(res=>{
+            }).then(res => {
               console.log(res)
               wx.showToast({
                 title: '更改成功',
-                icon:'success'
+                icon: 'success'
               })
               this.onPullDownRefresh()
             })
@@ -119,11 +120,11 @@ Page({
               data: {
                 status: '未来'
               }
-            }).then(res=>{
+            }).then(res => {
               console.log(res)
               wx.showToast({
                 title: '更改成功',
-                icon:'success'
+                icon: 'success'
               })
               this.onPullDownRefresh()
             })
@@ -132,14 +133,14 @@ Page({
             break;
         }
       },
-      fail (res) {
+      fail(res) {
         console.log(res.errMsg)
       }
     })
   },
 
-  onPullDownRefresh:function(){
-    tasks.doc(this.data.detailId).get().then(res=>{
+  onPullDownRefresh: function() {
+    tasks.doc(this.data.detailId).get().then(res => {
       console.log(res)
       this.setData({
         todos: res.data
@@ -147,4 +148,32 @@ Page({
       succecc: wx.stopPullDownRefresh();
     })
   },
+
+  start() {
+    const countDown = this.selectComponent('.control-count-down');
+    countDown.start();
+  },
+
+  pause() {
+    const countDown = this.selectComponent('.control-count-down');
+    countDown.pause();
+  },
+
+  reset() {
+    const countDown = this.selectComponent('.control-count-down');
+    countDown.reset();
+  },
+
+  finished(event) {
+    console.log(event)
+    wx.showToast({
+      title: '完成',
+      icon:'success'
+    })
+    tasks.doc(this.data.detailId).update({
+      data:{
+        tomatoTime: _.inc(25)
+      }
+    })
+  }
 })

@@ -1,5 +1,16 @@
 <van-cell-group>
-	<van-cell title="清单类别" bindtap="onChange" > {{ todos.status }} </van-cell>
-	<van-cell title="任务状态"> {{ todos.isFinish ? '已完成' : '未完成' }}</van-cell>
-	<van-cell title="创建时间"> {{ getDate }}</van-cell>
+  <van-cell title="清单类别" bindtap="onChange"> {{ todos.status }} </van-cell>
+  <van-cell title="任务状态"> {{ todos.isFinish ? '已完成' : '未完成' }}</van-cell>
+  <van-cell title="创建时间"> {{ getDate }}</van-cell>
 </van-cell-group>
+<view class="clock">
+  <text>
+    来完成一个🍅⏰吧！！！
+  </text> 
+</view>
+  <van-count-down class="control-count-down" millisecond time="{{ 3000 }}"  auto-start="{{ false }}" format="mm:ss:SSS" bind:finish="finished"/>
+  <van-grid clickable column-num="3">
+    <van-grid-item text="开始" icon="play-circle-o" bindclick="start" />
+    <van-grid-item text="暂停" icon="pause-circle-o" bindclick="pause" />
+    <van-grid-item text="重置" icon="replay" bindclick="reset" />
+  </van-grid>

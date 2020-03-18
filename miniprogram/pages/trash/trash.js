@@ -100,7 +100,6 @@ Page({
     })
   },
   allDel: function(evt){
-
     wx.showModal({
       title: '清空任务',
       content: '确定要清空所有任务记录吗，清空后将无法恢复',
@@ -112,7 +111,7 @@ Page({
             console.log(res)
           })
           this.onPullDownRefresh();
-          //console.log('点击确认回调')
+          console.log('点击确认回调')
         } else {   
           //console.log('点击取消回调')
         }
