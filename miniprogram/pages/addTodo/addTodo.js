@@ -15,6 +15,7 @@ Page({
     isDelete: false,
     rank: '',
     spendTime: '',
+    weekDay:''
   }, 
 
   //输入框获取输入并判断输入是否合法
@@ -80,10 +81,12 @@ Page({
     let day = nowDate.getDate();
     let today = `${year}-${month}-${day}`
     let second = Date.now();
+    let weekday = nowDate.getDay()
     console.log(evt,this.data.radioRecord,today)
     this.setData({
       dateRecord: today,
-      rank: second
+      rank: second,
+      weekDay: weekday
     })
     tasks.add({
       data:{
@@ -93,7 +96,8 @@ Page({
         dateRecord: this.data.dateRecord,
         isDelete: this.data.isDelete,
         time: this.data.rank,
-        spendTime: this.data.spendTime
+        spendTime: this.data.spendTime,
+        weekDay: this.data.weekDay
       }
     }).then(res => { 
       console.log(res)
