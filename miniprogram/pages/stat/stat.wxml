@@ -1,3 +1,7 @@
 <view class="container">
-  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+	<view class="title">
+		<view wx:if="{{!isMainChartDisplay}}" class="back-btn" bindtap="backToMainChart">返回</view>
+		{{chartTitle}}
+	</view>
+    <canvas canvas-id="columnCanvas" class="canvas"></canvas>
 </view>
