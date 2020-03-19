@@ -11,3 +11,12 @@
   height: 100rpx;
   
 }
+
+.tip{
+  color: #e0e0e0;
+  margin: 15rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: inherit;
+}
