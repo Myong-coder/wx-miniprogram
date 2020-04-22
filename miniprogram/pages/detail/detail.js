@@ -2,6 +2,7 @@
 const db = wx.cloud.database()
 const tasks = db.collection('tasks')
 const _= db.command
+const app = getApp()
 Page({
 
   /**
@@ -11,7 +12,11 @@ Page({
     todos: {},
     detailId: '',
     creatTime: '',
-    getDate: ''
+    getDate: '',
+    buttonStatus:app.globalData.buttonStatus
+    // buttonStatus:'开始记录',
+    // startTime:'',
+    // stopTime:''
   },
 
   pageData: {
@@ -32,7 +37,8 @@ Page({
     console.log(res)
     this.setData({
       todos: res.data,
-      creatTime: new Date(res.data.time)
+      creatTime: new Date(res.data.time),
+      buttonStatus: app.globalData.buttonStatus
     })
     // })
     let creatDate = this.data.creatTime;
@@ -149,31 +155,76 @@ Page({
     })
   },
 
-  start() {
-    const countDown = this.selectComponent('.control-count-down');
-    countDown.start();
-  },
+  changeButton: function(){
+    console.log(app.globalData.buttonStatus)
+    if(app.globalData.buttonStatus == '开始记录'){
+      app.globalData.startTime=Date.now()
+      console.log(app.globalData.startTime)
+      app.globalData.buttonStatus ='停止记录'
+      console.log(app.globalData.buttonStatus)
+      this.setData({
+        buttonStatus:app.globalData.buttonStatus
+      })
+      //this.setData({
+        //buttonStatus: "停止记录",
+        //startTime: Date.now()
+      //})
+      // tasks.doc(this.data.detailId).update({
+      //   data: {
+      //     buttonStatus: "停止记录",
+      //     startTime: Date.now()
+      //   }
+      // }).then(res => {
+      //   this.setData({
 
-  pause() {
-    const countDown = this.selectComponent('.control-count-down');
-    countDown.pause();
-  },
-
-  reset() {
-    const countDown = this.selectComponent('.control-count-down');
-    countDown.reset();
-  },
-
-  finished(event) {
-    console.log(event)
-    wx.showToast({
-      title: '完成',
-      icon:'success'
-    })
-    tasks.doc(this.data.detailId).update({
-      data:{
-        tomatoTime: _.inc(25)
+      //   })
+      // })
+    }
+    else{
+    //   this.setData({
+         app.globalData.buttonStatus= "开始记录",
+         app.globalData.stopTime= Date.now()
+         console.log(app.globalData.stopTime)
+         this.setData({
+           buttonStatus: app.globalData.buttonStatus
+         })
+    //   })
+       //console.log(stopTime)
+       let focusTime = (app.globalData.stopTime - app.globalData.startTime)/(1000*60*60)
+       console.log(focusTime)
+       tasks.doc(this.data.detailId).update({
+       data:{
+        tomatoTime: _.inc(focusTime)
       }
     })
+     }
   }
+
+  // start() {
+  //   const countDown = this.selectComponent('.control-count-down');
+  //   countDown.start();
+  // },
+
+  // pause() {
+  //   const countDown = this.selectComponent('.control-count-down');
+  //   countDown.pause();
+  // },
+
+  // reset() {
+  //   const countDown = this.selectComponent('.control-count-down');
+  //   countDown.reset();
+  // },
+
+  // finished(event) {
+  //   console.log(event)
+  //   wx.showToast({
+  //     title: '完成',
+  //     icon:'success'
+  //   })
+  //   tasks.doc(this.data.detailId).update({
+  //     data:{
+  //       tomatoTime: _.inc(0.5)
+  //     }
+  //   })
+  // }
 })

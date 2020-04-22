@@ -15,6 +15,10 @@ App({
       })
     }
 
-    this.globalData = {}
+    this.globalData = {
+      buttonStatus:'开始记录',
+      startTime:'',
+      stopTime:''
+    }
   }
 })

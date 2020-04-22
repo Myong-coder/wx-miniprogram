@@ -6,7 +6,7 @@ const tasks = db.collection('tasks');
 var chartData = {
   main: {
     title: '任务记录',
-    data: [15, 20, 45],
+    data: [0, 0, 0],
     categories: ['已完成', '未完成', '番茄记录']
   }
 };
@@ -31,8 +31,8 @@ Page({
 
     var arr = this.data.todos;
     //console.log(arr)
-    console.log(arr.length)
-    console.log(arr[1].isFinish)
+    //console.log(arr.length)
+    //console.log(arr[1].isFinish)
     for (let i = 0; i < arr.length; i++) {
       //console.log(arr[i].tomatoTime)
       if (arr[i].tomatoTime != undefined) {
@@ -49,7 +49,7 @@ Page({
         //console.log(sum2)
       }
     }
-    console.log(sum, sum2, sum1)
+    //console.log(sum, sum2, sum1)
     dataList = [sum1, sum2, sum]
     chartData.main.data = dataList
   },

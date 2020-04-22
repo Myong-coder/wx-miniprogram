@@ -92,9 +92,9 @@ Page({
             fail: console
             })
             this.onPullDownRefresh();
-          console.log('点击确认回调')
+          //console.log('点击确认回调')
         } else {   
-          console.log('点击取消回调')
+          //console.log('点击取消回调')
         }
       }
     })

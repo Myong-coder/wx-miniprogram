@@ -97,6 +97,7 @@ Page({
       this.onPullDownRefresh()
     })
   },
+  
   _handlerchange: function(evt){
     console.log(evt.detail.value,evt.currentTarget.dataset.checkid)
     this.setData({

@@ -5,14 +5,15 @@
 </van-cell-group>
 <view class="clock">
   <text>
-    来完成一个🍅⏰吧！！！
+    来记录你的专注时间吧
+
   </text> 
 </view>
-  <van-count-down class="control-count-down" millisecond time="{{ 1500000 }}"  auto-start="{{ false }}" format="mm:ss:SSS" bind:finish="finished"/>
+  <!-- <van-count-down class="control-count-down" millisecond time="{{ 1800000 }}"  auto-start="{{ false }}" format="mm:ss:SSS" bind:finish="finished"/>
   <van-grid clickable column-num="3">
     <van-grid-item text="开始" icon="play-circle-o" bindclick="start" />
     <van-grid-item text="暂停" icon="pause-circle-o" bindclick="pause" />
     <van-grid-item text="重置" icon="replay" bindclick="reset" />
-  </van-grid>
+  </van-grid> -->
+<van-button type="info" size="large" bindclick="changeButton">{{ buttonStatus }}</van-button>
 
-  <view class="tip">番茄钟未完成重置将不会记录到统计数据</view>
