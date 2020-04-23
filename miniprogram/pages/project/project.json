@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-divider": "/miniprogram_npm/@vant/weapp/divider/index",
+    "van-checkbox": "../../miniprogram_npm/@vant/weapp/checkbox/index",
+    "van-checkbox-group": "../../miniprogram_npm/@vant/weapp/checkbox-group",
+    "van-circle": "/miniprogram_npm/@vant/weapp/circle/index"
+  }
+}

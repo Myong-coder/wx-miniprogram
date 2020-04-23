@@ -1,0 +1,53 @@
+/* pages/project/project.wxss */
+.title{
+  text-align: center;
+}
+
+.addTask{
+  width: 100%;
+  height: 250rpx;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.addTask icon{
+  margin-top: 40rpx;
+}
+
+/* flex布局只对子元素产生影响 */
+.addTask>view{
+  flex: 1;
+  display: flex;
+  /* background-color: green; */
+  /* border-bottom: 1rpx solid cyan; */
+  margin: 20rpx 0;
+}
+
+.tasks{
+  margin-top: 40rpx;
+  border-bottom: 1px solid #e0e0e0;
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.status .stat{
+  margin-left:100rpx;
+}
+
+button{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 15rpx;
+}
+
+.progress .projectProgress{
+  margin: 40rpx;
+}
+
+.progress{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items:center;
+}

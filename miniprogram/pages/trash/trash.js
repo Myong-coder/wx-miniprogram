@@ -58,7 +58,9 @@ Page({
     wx.showLoading({
       title: '获取回收任务列表...',
     })
-    tasks.skip(this.pageData.skip).get().then(res=>{
+    tasks.skip(this.pageData.skip).where({
+      isDelete:true
+    }).get().then(res=>{
       //console.log(res)
       let oldData = this.data.todos;
       this.setData({

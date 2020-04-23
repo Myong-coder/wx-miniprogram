@@ -52,12 +52,6 @@
 			"current": -1,
 			"list": [
 				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide",
-					"query": ""
-				},
-				{
 					"id": 1,
 					"name": "添加任务",
 					"pathName": "pages/addTodo/addTodo",
@@ -90,6 +84,13 @@
 					"name": "统计分析",
 					"pathName": "pages/stat/stat",
 					"query": "id=17039e1e5e7165ef000477b721baa178",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "项目详情",
+					"pathName": "pages/project/project",
+					"query": "id=17b0c7775e9fb12900a7001a18959fdf",
 					"scene": null
 				}
 			]
