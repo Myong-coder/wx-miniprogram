@@ -53,7 +53,7 @@ Page({
       progress: res.data.length,
       })
     })
-    console.log((100 / this.data.progressValue) * this.data.progress)
+    //console.log((100 / this.data.progressValue) * this.data.progress)
     this.setData({
       progressSum: Math.ceil((100 / this.data.progressValue) * this.data.progress)
     })
@@ -158,4 +158,40 @@ Page({
       isDelete: false
     })
   },
+
+  deleteProject:function(evt){
+    let proId=this.data.projectId
+    // wx.cloud.callFunction({
+    //   name: 'delete',
+    //   data: {
+    //     a:proId
+    //   }
+    // }).then(res => {
+    //   console.log(res)
+    //   console.log(proId)
+    // })
+    wx.showModal({
+      title: '删除此项目',
+      content: '确定要删除此项目吗，删除后子任务也会同时删除',
+      success: res => {
+        if (res.confirm) {
+          wx.cloud.callFunction({
+            name: 'delete',
+            data:{
+              a:proId
+            }
+          }).then(res => {
+            console.log(res)
+            console.log(proId)
+          })
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+          console.log('点击确认回调')
+        } else {
+          console.log('点击取消回调')
+        }
+      }
+    })
+  }
 })

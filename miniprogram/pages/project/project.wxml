@@ -20,7 +20,7 @@
      </radio-group>
     </view>
     <view>
-      <button class="addBtn" form-type="submit" disabled="{{ !(isBe && nowStatus)  }}">添加任务</button>
+      <button class="addBtn" form-type="submit" type="primary" disabled="{{ !(isBe && nowStatus)  }}">添加任务</button>
     </view>
   </view> 
 </form>
@@ -28,4 +28,4 @@
   <view class="projectProgress">项目进度</view>
   <van-circle value="{{ progressSum }}" layer-color="#e0e0e0" size="200" text="已完成进度" />
 </view>
-
+<button type="warn" bindtap="deleteProject">删除此项目</button>

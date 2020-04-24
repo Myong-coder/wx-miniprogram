@@ -42,7 +42,7 @@
 					<van-cell wx:if="{{ item.status == '项目' }}" title="{{ item.title }}">
           {{ item.dateRecord }}</van-cell>
 					</navigator>
-					<icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel"></icon>
+					<!-- <icon type="clear" data-delid="{{ item._id }}" bindtap="_handlerDel"></icon> -->
 				</view>
 
 			</block>

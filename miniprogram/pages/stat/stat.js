@@ -7,7 +7,7 @@ var chartData = {
   main: {
     title: '任务记录',
     data: [0, 0, 0],
-    categories: ['已完成', '未完成', '番茄记录']
+    categories: ['已完成', '未完成', '专注记录']
   }
 };
 var dataList =[]
@@ -96,7 +96,7 @@ Page({
       animation: true,
       categories: chartData.main.categories,
       series: [{
-        name: '完成量',
+        name: '数据量',
         data: chartData.main.data,
         format: function (val, name) {
           return val.toFixed(2) ;

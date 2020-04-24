@@ -28,6 +28,7 @@
 	"libVersion": "2.10.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -90,7 +91,7 @@
 					"id": 5,
 					"name": "项目详情",
 					"pathName": "pages/project/project",
-					"query": "id=17b0c7775e9fb12900a7001a18959fdf",
+					"query": "id=2a625d2b5ea248e2000f651d3fe59577",
 					"scene": null
 				}
 			]
